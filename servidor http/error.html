@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Erro Cyberpunk</title>
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(45deg, #00ffcc, #ff00ff, #00ccff);
+      font-family: "VT323", monospace;
+      color: #fff;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Scanlines para vibe CRT */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(transparent 0px, rgba(0, 0, 0, 0.2) 2px);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .container {
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      max-width: 600px;
+      z-index: 2;
+    }
+
+    h1 {
+      font-size: 6em;
+      margin: 0;
+      text-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff, 0 0 30px #ffff00;
+      animation: glitch 1.5s infinite;
+    }
+
+    p {
+      font-size: 1.8em;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 15px;
+      border: 5px solid #ffff00;
+      box-shadow: 0 0 15px #ffff00;
+      border-radius: 5px;
+      text-transform: uppercase;
+      animation: type 3s steps(30) infinite;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .blink {
+      animation: blink 0.8s infinite;
+    }
+
+    a {
+      color: #00ffff;
+      text-decoration: underline wavy #ff00ff;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    a:hover {
+      color: #ff00ff;
+      text-shadow: 0 0 10px #ff00ff;
+    }
+
+    .stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .star {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #fff;
+      animation: twinkle 2s infinite;
+    }
+
+    @keyframes glitch {
+      0% {
+        transform: translate(0);
+      }
+
+      15% {
+        transform: translate(-5px, 5px);
+      }
+
+      30% {
+        transform: translate(5px, -5px);
+      }
+
+      45% {
+        transform: translate(-3px, 3px);
+      }
+
+      60% {
+        transform: translate(3px, -3px);
+      }
+
+      100% {
+        transform: translate(0);
+      }
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    @keyframes twinkle {
+      0% {
+        opacity: 0.3;
+      }
+
+      50% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0.3;
+      }
+    }
+
+    @keyframes type {
+      0% {
+        width: 0;
+      }
+
+      50% {
+        width: 100%;
+      }
+
+      100% {
+        width: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="stars" id="stars"></div>
+  <div class="container">
+    <h1>404</h1>
+    <p>ERRO: PÁGINA NÃO LOCALIZADA<br><span class="blink">ACESSO NEGADO</span><br><a href="/">TENTAR NOVAMENTE</a></p>
+  </div>
+
+  <script>
+    const starsContainer = document.getElementById("stars");
+    for (let i = 0; i < 50; i++) {
+      const star = document.createElement("div");
+      star.className = "star";
+      star.style.left = Math.random() * 100 + "vw";
+      star.style.top = Math.random() * 100 + "vh";
+      star.style.animationDelay = Math.random() * 2 + "s";
+      starsContainer.appendChild(star);
+    }
+  </script>
+</body>
+
+</html>

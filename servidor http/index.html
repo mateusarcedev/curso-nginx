@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NGINX - Servidor de Arquivos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    h1 {
+      color: #2c3e50;
+      font-size: 2.5em;
+    }
+
+    p {
+      font-size: 1.2em;
+      line-height: 1.5;
+    }
+
+    .file-list {
+      margin-top: 30px;
+      text-align: left;
+    }
+
+    .file-item {
+      background-color: #fff;
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Servidor de Arquivos NGINX</h1>
+    <p>Bem-vindo aos meus estudos de NGINX! Aqui você pode listar e gerenciar arquivos do servidor.</p>
+
+    <div class="file-list" id="fileList">
+      <!-- Lista de arquivos será inserida aqui pelo JavaScript -->
+    </div>
+
+    <button onclick="listFiles()">Atualizar Lista de Arquivos</button>
+  </div>
+
+  <script>
+    // Simulação de lista de arquivos (substitua por uma chamada real ao servidor NGINX)
+    const files = [
+      "documento.pdf",
+      "foto.jpg",
+      "relatorio.txt",
+      "backup.zip"
+    ];
+
+    function listFiles() {
+      const fileList = document.getElementById("fileList");
+      fileList.innerHTML = ""; // Limpa a lista atual
+
+      if (files.length === 0) {
+        fileList.innerHTML = "<p>Nenhum arquivo encontrado.</p>";
+        return;
+      }
+
+      files.forEach(file => {
+        const fileItem = document.createElement("div");
+        fileItem.className = "file-item";
+        fileItem.textContent = file;
+        fileList.appendChild(fileItem);
+      });
+    }
+
+    // Carrega a lista ao abrir a página
+    window.onload = listFiles;
+  </script>
+</body>
+
+</html>
